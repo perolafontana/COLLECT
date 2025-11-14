@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Coleção - COLLECT</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      color: #FFD700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .cadastro-container {
+      background-color: rgba(255, 215, 0, 0.05);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid #FFD700;
+      border-radius: 5px;
+      background: #000;
+      color: #FFD700;
+    }
+
+    input[type="file"] {
+      border: none;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #FFD700;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #fff;
+    }
+
+    .voltar {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .voltar a {
+      color: #FFD700;
+      text-decoration: none;
+    }
+
+    .voltar a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="cadastro-container">
+    <h2>Cadastrar Coleção</h2>
+    <form onsubmit="return salvarColecao()">
+      <label for="nome">Nome do item:</label>
+      <input type="text" id="nome" required>
+
+      <label for="categoria">Categoria:</label>
+      <select id="categoria" required>
+        <option value="">Selecione</option>
+        <option value="revista">Revista</option>
+        <option value="gibi">Gibi</option>
+        <option value="lata">Lata</option>
+        <option value="figurinha">Figurinha</option>
+        <option value="outro">Outro</option>
+      </select>
+
+      <label for="tipo">Tipo:</label>
+      <input type="text" id="tipo" placeholder="Ex: edição especial" required>
+
+      <label for="data">Data:</label>
+      <input type="date" id="data" required>
+
+      <label for="foto">Adicionar foto:</label>
+      <input type="file" id="foto" accept="image/*">
+
+      <button type="submit">Salvar Coleção</button>
+    </form>
+
+    <div class="voltar">
+      <p><a href="index.html">Voltar para Página Inicial</a></p>
+    </div>
+  </div>
+
+  <script>
+    function salvarColecao() {
+      alert("Coleção cadastrada com sucesso!");
+      window.location.href = "index.html"; 
+      return false; // evita envio real do formulário
+    }
+  </script>
+</body>
+</html>
