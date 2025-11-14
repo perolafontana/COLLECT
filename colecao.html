@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COLLECT - Página Inicial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      color: #FFD700;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #FFD700;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: rgba(255, 215, 0, 0.05);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid #FFD700;
+      border-radius: 5px;
+      background: #000;
+      color: #FFD700;
+    }
+
+    input[type="file"] {
+      border: none;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #FFD700;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .colecao-lista {
+      margin-top: 30px;
+    }
+
+    .item {
+      border: 1px solid #FFD700;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #111;
+    }
+
+    .premium {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      border: 2px solid #FFD700;
+      border-radius: 10px;
+      background-color: rgba(255, 215, 0, 0.1);
+    }
+
+    .premium h3 {
+      margin-bottom: 15px;
+    }
+
+    .premium ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .premium ul li {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>COLLECT</h1>
+  </header>
+
+  <div class="container">
+    <!-- Formulário -->
+    <h2>Cadastrar Coleção</h2>
+    <form id="formColecao">
+      <label for="nome">Nome do item:</label>
+      <input type="text" id="nome" required>
+
+      <label for="categoria">Categoria:</label>
+      <select id="categoria" required>
+        <option value="">Selecione</option>
+        <option value="revista">Revista</option>
+        <option value="gibi">Gibi</option>
+        <option value="lata">Lata</option>
+        <option value="figurinha">Figurinha</option>
+        <option value="outro">Outro</option>
+      </select>
+
+      <label for="tipo">Tipo:</label>
+      <input type="text" id="tipo" placeholder="Ex: edição especial" required>
+
+      <label for="data">Data:</label>
+      <input type="date" id="data" required>
+
+      <label for="foto">Adicionar foto:</label>
+      <input type="file" id="foto" accept="image/*">
+
+      <button type="submit">Salvar Coleção</button>
+    </form>
+
+    <!-- Lista de coleções -->
+    <div class="colecao-lista" id="colecaoLista">
+      <h2>Minha Coleção</h2>
+      <!-- Itens aparecerão aqui -->
+    </div>
+
+    <!-- Plano Premium -->
+    <div class="premium">
+      <h3>Plano Premium</h3>
+      <p>Assine e aproveite todos os benefícios:</p>
+      <ul>
+        <li>✨ 2 contas simultâneas</li>
+        <li>✨ Lista de favoritos</li>
+        <li>✨ Identificação de raridade dos itens</li>
+        <li>✨ Mais espaço para fotos e coleções</li>
+      </ul>
+      <button onclick="assinarPremium()">Assinar Premium</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("formColecao");
+    const lista = document.getElementById("colecaoLista");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const categoria = document.getElementById("categoria").value;
+      const tipo = document.getElementById("tipo").value;
+      const data = document.getElementById("data").value;
+      const fotoInput = document.getElementById("foto");
+
+      let foto = "";
+      if (fotoInput.files.length > 0) {
+        foto = fotoInput.files[0].name; // apenas nome do arquivo
+      }
+
+      const item = document.createElement("div");
+      item.classList.add("item");
+      item.innerHTML = `
+        <p><strong>Nome:</strong> ${nome}</p>
+        <p><strong>Categoria:</strong> ${categoria}</p>
+        <p><strong>Tipo:</strong> ${tipo}</p>
+        <p><strong>Data:</strong> ${data}</p>
+        <p><strong>Foto:</strong> ${foto ? foto : "Nenhuma adicionada"}</p>
+      `;
+
+      lista.appendChild(item);
+      form.reset();
+      alert("Item adicionado à coleção!");
+    });
+
+    function assinarPremium() {
+      alert("Obrigado por assinar o Plano Premium! 🎉");
+      // Aqui você pode redirecionar para uma página de pagamento ou benefícios
+    }
+  </script>
+</body>
+</html>
