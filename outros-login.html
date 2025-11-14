@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outro Login - COLLECT</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      color: #FFD700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .outros-container {
+      background-color: rgba(255, 215, 0, 0.05);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      width: 350px;
+      text-align: center;
+    }
+
+    .outros-container h1 {
+      margin-bottom: 20px;
+    }
+
+    .outros-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #FFD700;
+      border-radius: 5px;
+      background: #000;
+      color: #FFD700;
+    }
+
+    .outros-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #FFD700;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .outros-container button:hover {
+      background-color: #fff;
+    }
+
+    .links {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #FFD700;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="outros-container">
+    <h1>Entrar com Outra Conta</h1>
+    <form onsubmit="return loginOutro()">
+      <input type="text" placeholder="Provedor (Ex: Yahoo, Outlook...)" required>
+      <input type="email" placeholder="E-mail da conta" required>
+      <input type="password" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+
+    <div class="links">
+      <p><a href="login.html">Voltar para Login</a></p>
+    </div>
+  </div>
+
+  <script>
+    function loginOutro() {
+      alert("Login realizado com sucesso!");
+      window.location.href = "colecao.html"; 
+      // 👉 Troque "index.html" pela sua página principal
+      return false; // evita envio real do formulário
+    }
+  </script>
+</body>
+</html>
