@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COLLECT - Página Inicial</title>
+  <title>Minha Coleção - COLLECT</title>
   <style>
     body {
       margin: 0;
@@ -26,24 +26,44 @@
     }
 
     .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 30px;
-      background-color: rgba(255, 215, 0, 0.05);
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
     }
 
-    .colecao-lista {
-      margin-top: 30px;
+    .filtro {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .filtro select {
+      padding: 10px;
+      border: 1px solid #FFD700;
+      border-radius: 5px;
+      background: #000;
+      color: #FFD700;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
     }
 
     .item {
-      border: 1px solid #FFD700;
-      border-radius: 5px;
-      padding: 15px;
-      margin-bottom: 15px;
       background-color: #111;
+      border: 1px solid #FFD700;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .item img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
     }
 
     .btn {
@@ -62,75 +82,77 @@
     .btn:hover {
       background-color: #fff;
     }
-
-    .premium {
-      margin-top: 40px;
-      text-align: center;
-      padding: 20px;
-      border: 2px solid #FFD700;
-      border-radius: 10px;
-      background-color: rgba(255, 215, 0, 0.1);
-    }
-
-    .premium ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .premium ul li {
-      margin: 8px 0;
-    }
   </style>
 </head>
 <body>
   <header>
-    <h1>COLLECT</h1>
+    <h1>Minha Coleção</h1>
   </header>
 
   <div class="container">
-    <h2>Minha Coleção</h2>
-    <div class="colecao-lista" id="colecaoLista">
-      <!-- Itens cadastrados aparecerão aqui -->
-
-      <!-- Dentro da div .container -->
-<div class="container">
-  <!-- Filtro -->
-  <div class="filtro">
-    <input type="text" id="filtro" placeholder="Filtrar por nome ou categoria...">
-  </div>
-
-  <!-- Galeria -->
-  <div class="galeria" id="galeria">
-    <!-- Itens aparecem aqui -->
-  </div>
-
-  <!-- Botão para cadastrar -->
-  <a href="cadastro-colecao.html" class="btn">Cadastrar Nova Coleção</a>
-</div>
-
+    <!-- Filtro -->
+    <div class="filtro">
+      <label for="categoriaFiltro">Filtrar por categoria:</label>
+      <select id="categoriaFiltro">
+        <option value="todas">Todas</option>
+        <option value="revista">Revista</option>
+        <option value="gibi">Gibi</option>
+        <option value="lata">Lata</option>
+        <option value="figurinha">Figurinha</option>
+        <option value="outro">Outro</option>
+      </select>
     </div>
 
-    <!-- Botão para cadastrar coleção -->
-    <a href="cadastro-colecao.html" class="btn">Cadastrar Nova Coleção</a>
-
-    <!-- Plano Premium -->
-    <div class="premium">
-      <h3>Plano Premium</h3>
-      <p>Assine e aproveite todos os benefícios:</p>
-      <ul>
-        <li>✨ 2 contas simultâneas</li>
-        <li>✨ Lista de favoritos</li>
-        <li>✨ Identificação de raridade dos itens</li>
-        <li>✨ Mais espaço para fotos e coleções</li>
-      </ul>
-      <button class="btn" onclick="assinarPremium()">Assinar Premium</button>
+    <!-- Galeria -->
+    <div class="galeria" id="galeria">
+      <!-- Itens aparecem aqui -->
     </div>
+
+    <!-- Botão para cadastrar -->
+    <a href="cadastro-colecao.html" class="btn">Cadastrar Novo Item</a>
   </div>
 
   <script>
-    function assinarPremium() {
-      alert("Obrigado por assinar o Plano Premium! 🎉");
+    // Exemplo de dados simulados (futuramente pode vir do localStorage ou banco)
+    const colecao = [
+      {nome: "Revista Batman #1", categoria: "revista", tipo: "Edição especial", data: "2025-01-01", foto: "batman.jpg"},
+      {nome: "Lata Coca-Cola 1990", categoria: "lata", tipo: "Colecionável", data: "1990-05-10", foto: "coca.jpg"},
+      {nome: "Figurinha Copa 2002", categoria: "figurinha", tipo: "Rara", data: "2002-06-01", foto: "figurinha.jpg"},
+      {nome: "Gibi Turma da Mônica", categoria: "gibi", tipo: "Clássico", data: "1995-03-15", foto: "monica.jpg"}
+    ];
+
+    const galeria = document.getElementById("galeria");
+    const categoriaFiltro = document.getElementById("categoriaFiltro");
+
+    function mostrarColecao(lista) {
+      galeria.innerHTML = "";
+      lista.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("item");
+        div.innerHTML = `
+          <img src="${item.foto}" alt="${item.nome}">
+          <p><strong>${item.nome}</strong></p>
+          <p>Categoria: ${item.categoria}</p>
+          <p>Tipo: ${item.tipo}</p>
+          <p>Data: ${item.data}</p>
+        `;
+        galeria.appendChild(div);
+      });
     }
+
+    // Mostrar todos inicialmente
+    mostrarColecao(colecao);
+
+    // Filtro por categoria
+    categoriaFiltro.addEventListener("change", () => {
+      const categoria = categoriaFiltro.value;
+      if (categoria === "todas") {
+        mostrarColecao(colecao);
+      } else {
+        const filtrados = colecao.filter(item => item.categoria === categoria);
+        mostrarColecao(filtrados);
+      }
+    });
   </script>
 </body>
 </html>
