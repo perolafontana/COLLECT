@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COLLECT</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* fundo preto */
+      color: #FFD700; /* dourado */
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Logo com fade-in */
+    .logo {
+      opacity: 0;
+      animation: fadeIn 3s ease-in forwards;
+      max-width: 300px;
+    }
+
+    /* Seta com fade-in igual à logo */
+    .scroll-top {
+      opacity: 0;
+      animation: fadeIn 3s ease-in forwards;
+      animation-delay: 0s; /* aparece junto com a logo */
+      margin-top: 20px;
+      background: none;
+      color: #FFD700; /* seta preta */
+      border: none;
+      font-size: 32px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .scroll-top:hover {
+      transform: scale(1.2);
+      color: #FFD700; /* dourado no hover */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <img src="Copilot_20251114_104808.png" alt="Logo COLLECT" class="logo">
+    
+    <!-- Seta centralizada abaixo da logo -->
+    <button class="scroll-top" onclick="goToHome()">↑</button>
+  </div>
+
+  <script>
+    // Redireciona para a página principal
+    function goToHome() {
+      window.location.href = "inicio.html"; 
+      // 👉 Troque "index.html" pelo endereço da sua página principal
+    }
+  </script>
+</body>
+</html>
