@@ -36,9 +36,8 @@
       text-align: center;
     }
 
-    .filtro input {
+    .filtro select {
       padding: 10px;
-      width: 300px;
       border: 1px solid #FFD700;
       border-radius: 5px;
       background: #000;
@@ -93,7 +92,15 @@
   <div class="container">
     <!-- Filtro -->
     <div class="filtro">
-      <input type="text" id="filtro" placeholder="Filtrar por nome ou categoria...">
+      <label for="categoriaFiltro">Filtrar por categoria:</label>
+      <select id="categoriaFiltro">
+        <option value="todas">Todas</option>
+        <option value="revista">Revista</option>
+        <option value="gibi">Gibi</option>
+        <option value="lata">Lata</option>
+        <option value="figurinha">Figurinha</option>
+        <option value="outro">Outro</option>
+      </select>
     </div>
 
     <!-- Galeria -->
@@ -110,11 +117,12 @@
     const colecao = [
       {nome: "Revista Batman #1", categoria: "revista", tipo: "Edição especial", data: "2025-01-01", foto: "batman.jpg"},
       {nome: "Lata Coca-Cola 1990", categoria: "lata", tipo: "Colecionável", data: "1990-05-10", foto: "coca.jpg"},
-      {nome: "Figurinha Copa 2002", categoria: "figurinha", tipo: "Rara", data: "2002-06-01", foto: "figurinha.jpg"}
+      {nome: "Figurinha Copa 2002", categoria: "figurinha", tipo: "Rara", data: "2002-06-01", foto: "figurinha.jpg"},
+      {nome: "Gibi Turma da Mônica", categoria: "gibi", tipo: "Clássico", data: "1995-03-15", foto: "monica.jpg"}
     ];
 
     const galeria = document.getElementById("galeria");
-    const filtro = document.getElementById("filtro");
+    const categoriaFiltro = document.getElementById("categoriaFiltro");
 
     function mostrarColecao(lista) {
       galeria.innerHTML = "";
@@ -135,14 +143,15 @@
     // Mostrar todos inicialmente
     mostrarColecao(colecao);
 
-    // Filtro
-    filtro.addEventListener("input", () => {
-      const termo = filtro.value.toLowerCase();
-      const filtrados = colecao.filter(item =>
-        item.nome.toLowerCase().includes(termo) ||
-        item.categoria.toLowerCase().includes(termo)
-      );
-      mostrarColecao(filtrados);
+    // Filtro por categoria
+    categoriaFiltro.addEventListener("change", () => {
+      const categoria = categoriaFiltro.value;
+      if (categoria === "todas") {
+        mostrarColecao(colecao);
+      } else {
+        const filtrados = colecao.filter(item => item.categoria === categoria);
+        mostrarColecao(filtrados);
+      }
     });
   </script>
 </body>
