@@ -56,6 +56,15 @@
     .senha-container button:hover {
       background-color: #fff;
     }
+
+    .voltar {
+      margin-top: 15px;
+      background: none;
+      border: none;
+      color: #FFD700;
+      cursor: pointer;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -65,8 +74,9 @@
     <form>
       <input type="email" placeholder="Seu e-mail" required>
       <button type="submit">Enviar link de recuperação</button>
-      <button>Voltar</button>
     </form>
+    <!-- Botão de voltar -->
+    <button class="voltar" onclick="window.location.href='login.html'">Voltar</button>
   </div>
 </body>
 </html>
