@@ -99,12 +99,36 @@
       <button type="submit">Entrar</button>
     </form>
 
-    <div class="social-login">
-      <button onclick="window.location.href=''">Entrar com Facebook</button>
-      <button>Entrar com Instagram</button>
-      <button>Entrar com Google</button>
-      <button>Entrar com outra conta</button>
-    </div>
+<div class="social-login">
+  <button onclick="loginFacebook()">Entrar com Facebook</button>
+  <button onclick="loginInstagram()">Entrar com Instagram</button>
+  <button onclick="loginGoogle()">Entrar com Google</button>
+  <button onclick="loginOutro()">Entrar com outra conta</button>
+</div>
+
+<script>
+  function loginFacebook() {
+    // Redireciona para a página de login do Facebook
+    window.location.href = "https://www.facebook.com/login.php";
+  }
+
+  function loginInstagram() {
+    // Redireciona para a página de login do Instagram
+    window.location.href = "https://www.instagram.com/accounts/login/";
+  }
+
+  function loginGoogle() {
+    // Redireciona para a página de login do Google
+    window.location.href = "https://accounts.google.com/signin";
+  }
+
+  function loginOutro() {
+    // Redireciona para uma página personalizada de login
+    window.location.href = "outros-login.html"; 
+    // 👉 Troque pelo endereço da sua página de autenticação personalizada
+  }
+</script>
+
 
     <div class="links">
       <p><a href="#">Esqueceu a senha?</a></p>
