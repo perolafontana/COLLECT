@@ -10,7 +10,7 @@
       padding: 0;
       background-color: #000; /* fundo preto */
       font-family: Arial, sans-serif;
-      color: #DDAC17; /* dourado */
+      color: #FFD700; /* dourado */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -18,7 +18,7 @@
     }
 
     .login-container {
-      background-color: rgba(255, 215, 0, 0.05); /* leve dourado transparente */
+      background-color: rgba(255, 215, 0, 0.05);
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
@@ -93,47 +93,48 @@
 <body>
   <div class="login-container">
     <h1>COLLECT</h1>
-    <form>
+    <!-- Formulário de login -->
+    <form onsubmit="return logar()">
       <input type="text" placeholder="Nome de usuário" required>
       <input type="password" placeholder="Senha" required>
       <button type="submit">Entrar</button>
     </form>
 
-<div class="social-login">
-  <button onclick="loginFacebook()">Entrar com Facebook</button>
-  <button onclick="loginInstagram()">Entrar com Instagram</button>
-  <button onclick="loginGoogle()">Entrar com Google</button>
-  <button onclick="loginOutro()">Entrar com outra conta</button>
-</div>
-
-<script>
-  function loginFacebook() {
-    // Redireciona para a página de login do Facebook
-    window.location.href = "https://www.facebook.com/login.php";
-  }
-
-  function loginInstagram() {
-    // Redireciona para a página de login do Instagram
-    window.location.href = "https://www.instagram.com/accounts/login/";
-  }
-
-  function loginGoogle() {
-    // Redireciona para a página de login do Google
-    window.location.href = "https://accounts.google.com/signin";
-  }
-
-  function loginOutro() {
-    // Redireciona para uma página personalizada de login
-    window.location.href = "outros-login.html"; 
-    // 👉 Troque pelo endereço da sua página de autenticação personalizada
-  }
-</script>
-
+    <div class="social-login">
+      <button onclick="loginFacebook()">Entrar com Facebook</button>
+      <button onclick="loginInstagram()">Entrar com Instagram</button>
+      <button onclick="loginGoogle()">Entrar com Google</button>
+      <button onclick="loginOutro()">Entrar com outra conta</button>
+    </div>
 
     <div class="links">
       <p><a href="senha.html">Esqueceu a senha?</a></p>
       <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
     </div>
   </div>
+
+  <script>
+    // Função para login normal
+    function logar() {
+      alert("Login realizado com sucesso!");
+      window.location.href = "index.html"; 
+      // 👉 Troque "index.html" pelo nome da sua página principal
+      return false; // evita envio real do formulário
+    }
+
+    // Funções para login social
+    function loginFacebook() {
+      window.location.href = "https://www.facebook.com/login.php";
+    }
+    function loginInstagram() {
+      window.location.href = "https://www.instagram.com/accounts/login/";
+    }
+    function loginGoogle() {
+      window.location.href = "https://accounts.google.com/signin";
+    }
+    function loginOutro() {
+      window.location.href = "outros-login.html";
+    }
+  </script>
 </body>
 </html>
