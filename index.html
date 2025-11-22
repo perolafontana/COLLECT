@@ -3,73 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COLLECT</title>
+  <title>COLLECT - Início</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000; /* fundo preto */
-      color: #FFD700; /* dourado */
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    /* Logo com fade-in */
-    .logo {
-      opacity: 0;
-      animation: fadeIn 3s ease-in forwards;
-      max-width: 300px;
-    }
-
-    /* Seta com fade-in igual à logo */
-    .scroll-top {
-      opacity: 0;
-      animation: fadeIn 3s ease-in forwards;
-      animation-delay: 0s; /* aparece junto com a logo */
-      margin-top: 20px;
-      background: none;
-      color: #FFD700; /* seta preta */
-      border: none;
-      font-size: 32px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .scroll-top:hover {
-      transform: scale(1.2);
-      color: #FFD700; /* dourado no hover */
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    body {background:#000;color:#FFD700;font-family:Arial;margin:0}
+    header {background:#111;padding:20px;text-align:center;box-shadow:0 0 10px rgba(255,215,0,.5)}
+    header h1 {margin:0;font-size:2.5em}
+    .container {max-width:900px;margin:40px auto;padding:20px;text-align:center}
+    .btn {display:inline-block;margin:10px;padding:12px 20px;background:#FFD700;color:#000;
+          border-radius:5px;font-weight:bold;text-decoration:none}
+    .btn:hover {background:#fff}
+    .premium {margin-top:40px;padding:20px;border:2px solid #FFD700;border-radius:10px;
+              background:rgba(255,215,0,.1)}
+    .premium ul {list-style:none;padding:0}
   </style>
 </head>
 <body>
+  <header><h1>COLLECT</h1></header>
   <div class="container">
-    <!-- Logo -->
-    <img src="Copilot_20251114_104808.png" alt="Logo COLLECT" class="logo">
-    
-    <!-- Seta centralizada abaixo da logo -->
-    <button class="scroll-top" onclick="goToHome()">↑</button>
+    <h2>Bem-vindo à sua coleção</h2>
+    <a href="galeria.html" class="btn">Ver Galeria</a>
+    <a href="colecao.html" class="btn">Ver Lista</a>
+    <a href="cadastro-colecao.html" class="btn">Cadastrar Novo Item</a>
+    <div class="premium">
+      <h3>Plano Premium</h3>
+      <p>Benefícios:</p>
+      <ul>
+        <li>✨ 2 contas simultâneas</li>
+        <li>✨ Lista de favoritos</li>
+        <li>✨ Identificação de raridade</li>
+        <li>✨ Mais espaço para fotos</li>
+      </ul>
+      <button class="btn" onclick="alert('Assinatura Premium ativada!')">Assinar Premium</button>
+    </div>
   </div>
-
-  <script>
-    // Redireciona para a página principal
-    function goToHome() {
-      window.location.href = "login.html"; 
-      // 👉 Troque "index.html" pelo endereço da sua página principal
-    }
-  </script>
 </body>
 </html>
-
