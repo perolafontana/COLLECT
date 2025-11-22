@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Coleção - COLLECT</title>
+  <title>Coleção com Imagens - COLLECT</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       background-color: #000;
       font-family: Arial, sans-serif;
       color: #FFD700;
+      margin: 0;
+      padding: 0;
     }
 
     header {
@@ -20,24 +20,23 @@
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
     .container {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 30px auto;
       padding: 20px;
     }
 
-    .filtro {
-      margin-bottom: 20px;
-      text-align: center;
+    form {
+      margin-bottom: 30px;
+      background-color: rgba(255, 215, 0, 0.05);
+      padding: 20px;
+      border-radius: 10px;
     }
 
-    .filtro select {
+    input, select {
+      width: 100%;
       padding: 10px;
+      margin: 10px 0;
       border: 1px solid #FFD700;
       border-radius: 5px;
       background: #000;
@@ -66,20 +65,18 @@
       margin-bottom: 10px;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 20px;
+    button {
       background-color: #FFD700;
       border: none;
       border-radius: 5px;
+      padding: 10px;
       color: #000;
       font-weight: bold;
-      text-decoration: none;
-      transition: background-color 0.3s;
+      cursor: pointer;
+      margin-top: 10px;
     }
 
-    .btn:hover {
+    button:hover {
       background-color: #fff;
     }
   </style>
@@ -90,68 +87,69 @@
   </header>
 
   <div class="container">
-    <!-- Filtro -->
-    <div class="filtro">
-      <label for="categoriaFiltro">Filtrar por categoria:</label>
-      <select id="categoriaFiltro">
-        <option value="todas">Todas</option>
+    <!-- Formulário -->
+    <form id="formColecao">
+      <input type="text" id="nome" placeholder="Nome do item" required>
+      <select id="categoria" required>
+        <option value="">Selecione a categoria</option>
         <option value="revista">Revista</option>
         <option value="gibi">Gibi</option>
         <option value="lata">Lata</option>
         <option value="figurinha">Figurinha</option>
         <option value="outro">Outro</option>
       </select>
-    </div>
+      <input type="text" id="tipo" placeholder="Tipo (ex: edição especial)" required>
+      <input type="date" id="data" required>
+      <input type="file" id="foto" accept="image/*">
+      <button type="submit">Adicionar à Coleção</button>
+    </form>
 
     <!-- Galeria -->
-    <div class="galeria" id="galeria">
-      <!-- Itens aparecem aqui -->
-    </div>
-
-    <!-- Botão para cadastrar -->
-    <a href="cadastro-colecao.html" class="btn">Cadastrar Novo Item</a>
+    <div class="galeria" id="galeria"></div>
   </div>
 
   <script>
-    // Exemplo de dados simulados (futuramente pode vir do localStorage ou banco)
-    const colecao = [
-      {nome: "Revista Batman #1", categoria: "revista", tipo: "Edição especial", data: "2025-01-01", foto: "batman.jpg"},
-      {nome: "Lata Coca-Cola 1990", categoria: "lata", tipo: "Colecionável", data: "1990-05-10", foto: "Copilot_20251114_163335.png"},
-      {nome: "Figurinha Copa 2002", categoria: "figurinha", tipo: "Rara", data: "2002-06-01", foto: "figurinha.jpg"},
-      {nome: "Gibi Turma da Mônica", categoria: "gibi", tipo: "Clássico", data: "1995-03-15", foto: "monica.jpg"}
-    ];
-
+    const form = document.getElementById("formColecao");
     const galeria = document.getElementById("galeria");
-    const categoriaFiltro = document.getElementById("categoriaFiltro");
 
-    function mostrarColecao(lista) {
-      galeria.innerHTML = "";
-      lista.forEach(item => {
-        const div = document.createElement("div");
-        div.classList.add("item");
-        div.innerHTML = `
-          <img src="${item.foto}" alt="${item.nome}">
-          <p><strong>${item.nome}</strong></p>
-          <p>Categoria: ${item.categoria}</p>
-          <p>Tipo: ${item.tipo}</p>
-          <p>Data: ${item.data}</p>
-        `;
-        galeria.appendChild(div);
-      });
-    }
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
 
-    // Mostrar todos inicialmente
-    mostrarColecao(colecao);
+      const nome = document.getElementById("nome").value;
+      const categoria = document.getElementById("categoria").value;
+      const tipo = document.getElementById("tipo").value;
+      const data = document.getElementById("data").value;
+      const fotoInput = document.getElementById("foto");
 
-    // Filtro por categoria
-    categoriaFiltro.addEventListener("change", () => {
-      const categoria = categoriaFiltro.value;
-      if (categoria === "todas") {
-        mostrarColecao(colecao);
+      const item = document.createElement("div");
+      item.classList.add("item");
+
+      // Se tiver foto, mostrar na galeria
+      if (fotoInput.files.length > 0) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          item.innerHTML = `
+            <img src="${e.target.result}" alt="${nome}">
+            <p><strong>${nome}</strong></p>
+            <p>Categoria: ${categoria}</p>
+            <p>Tipo: ${tipo}</p>
+            <p>Data: ${data}</p>
+          `;
+          galeria.appendChild(item);
+        };
+        reader.readAsDataURL(fotoInput.files[0]);
       } else {
-        const filtrados = colecao.filter(item => item.categoria === categoria);
-        mostrarColecao(filtrados);
+        item.innerHTML = `
+          <p><strong>${nome}</strong></p>
+          <p>Categoria: ${categoria}</p>
+          <p>Tipo: ${tipo}</p>
+          <p>Data: ${data}</p>
+          <p><em>Sem foto</em></p>
+        `;
+        galeria.appendChild(item);
       }
+
+      form.reset();
     });
   </script>
 </body>
