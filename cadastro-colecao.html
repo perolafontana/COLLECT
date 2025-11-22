@@ -4,18 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastrar Item - COLLECT</title>
-  <style>
-    body {background:#000;color:#FFD700;font-family:Arial;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}
-    .form-container {background:rgba(255,215,0,.05);padding:30px;border-radius:10px;box-shadow:0 0 15px rgba(255,215,0,.5);width:400px}
-    h2 {text-align:center;margin-bottom:20px}
-    input,select {width:100%;padding:10px;margin:10px 0;border:1px solid #FFD700;border-radius:5px;background:#000;color:#FFD700}
-    button {width:100%;padding:12px;background:#FFD700;border:none;border-radius:5px;color:#000;font-weight:bold;cursor:pointer}
-    button:hover {background:#fff}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="form-container">
-    <h2>Cadastrar Item</h2>
+  <header>
+    <h1>Cadastrar Item</h1>
+  </header>
+
+  <div class="container card">
     <form onsubmit="return salvarItem()">
       <input type="text" id="nome" placeholder="Nome do item" required>
       <select id="categoria" required>
@@ -31,7 +27,9 @@
       <input type="file" id="foto" accept="image/*">
       <button type="submit">Salvar</button>
     </form>
+    <a href="index.html" class="btn">Voltar</a>
   </div>
+
   <script>
     function salvarItem(){
       alert("Item cadastrado com sucesso!");
