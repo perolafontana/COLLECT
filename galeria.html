@@ -3,153 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coleção com Imagens - COLLECT</title>
+  <title>Galeria - COLLECT</title>
   <style>
-    body {
-      background-color: #000;
-      font-family: Arial, sans-serif;
-      color: #FFD700;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      padding: 20px;
-      background-color: #111;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
-    form {
-      margin-bottom: 30px;
-      background-color: rgba(255, 215, 0, 0.05);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #FFD700;
-      border-radius: 5px;
-      background: #000;
-      color: #FFD700;
-    }
-
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .item {
-      background-color: #111;
-      border: 1px solid #FFD700;
-      border-radius: 8px;
-      padding: 15px;
-      text-align: center;
-    }
-
-    .item img {
-      max-width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    button {
-      background-color: #FFD700;
-      border: none;
-      border-radius: 5px;
-      padding: 10px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background-color: #fff;
-    }
+    body {background:#000;color:#FFD700;font-family:Arial;margin:0}
+    header {background:#111;padding:20px;text-align:center;box-shadow:0 0 10px rgba(255,215,0,.5)}
+    .container {max-width:1000px;margin:30px auto;padding:20px}
+    .filtro {text-align:center;margin-bottom:20px}
+    .filtro select {padding:10px;border:1px solid #FFD700;border-radius:5px;background:#000;color:#FFD700}
+    .galeria {display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+    .item {background:#111;border:1px solid #FFD700;border-radius:8px;padding:15px;text-align:center}
+    .item img {max-width:100%;height:150px;object-fit:cover;border-radius:5px;margin-bottom:10px}
+    .btn {display:block;margin:30px auto;padding:12px 20px;background:#FFD700;color:#000;border-radius:5px;font-weight:bold;text-align:center;text-decoration:none}
+    .btn:hover {background:#fff}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Minha Coleção</h1>
-  </header>
-
+  <header><h1>Galeria da Coleção</h1></header>
   <div class="container">
-    <!-- Formulário -->
-    <form id="formColecao">
-      <input type="text" id="nome" placeholder="Nome do item" required>
-      <select id="categoria" required>
-        <option value="">Selecione a categoria</option>
+    <div class="filtro">
+      <label for="categoriaFiltro">Filtrar por categoria:</label>
+      <select id="categoriaFiltro">
+        <option value="todas">Todas</option>
         <option value="revista">Revista</option>
         <option value="gibi">Gibi</option>
         <option value="lata">Lata</option>
         <option value="figurinha">Figurinha</option>
         <option value="outro">Outro</option>
       </select>
-      <input type="text" id="tipo" placeholder="Tipo (ex: edição especial)" required>
-      <input type="date" id="data" required>
-      <input type="file" id="foto" accept="image/*">
-      <button type="submit">Adicionar à Coleção</button>
-    </form>
-
-    <!-- Galeria -->
+    </div>
     <div class="galeria" id="galeria"></div>
+    <a href="cadastro-colecao.html" class="btn">Cadastrar Novo Item</a>
   </div>
-
   <script>
-    const form = document.getElementById("formColecao");
-    const galeria = document.getElementById("galeria");
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const nome = document.getElementById("nome").value;
-      const categoria = document.getElementById("categoria").value;
-      const tipo = document.getElementById("tipo").value;
-      const data = document.getElementById("data").value;
-      const fotoInput = document.getElementById("foto");
-
-      const item = document.createElement("div");
-      item.classList.add("item");
-
-      // Se tiver foto, mostrar na galeria
-      if (fotoInput.files.length > 0) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          item.innerHTML = `
-            <img src="${e.target.result}" alt="${nome}">
-            <p><strong>${nome}</strong></p>
-            <p>Categoria: ${categoria}</p>
-            <p>Tipo: ${tipo}</p>
-            <p>Data: ${data}</p>
-          `;
-          galeria.appendChild(item);
-        };
-        reader.readAsDataURL(fotoInput.files[0]);
-      } else {
-        item.innerHTML = `
-          <p><strong>${nome}</strong></p>
-          <p>Categoria: ${categoria}</p>
-          <p>Tipo: ${tipo}</p>
-          <p>Data: ${data}</p>
-          <p><em>Sem foto</em></p>
-        `;
-        galeria.appendChild(item);
-      }
-
-      form.reset();
+    const colecao=[
+      {nome:"Revista Batman #1",categoria:"revista",tipo:"Edição especial",data:"2025-01-01",foto:"batman.jpg"},
+      {nome:"Lata Coca-Cola 1990",categoria:"lata",tipo:"Colecionável",data:"1990-05-10",foto:"coca.jpg"},
+      {nome:"Figurinha Copa 2002",categoria:"figurinha",tipo:"Rara",data:"2002-06-01",foto:"figurinha.jpg"}
+    ];
+    const galeria=document.getElementById("galeria");
+    const filtro=document.getElementById("categoriaFiltro");
+    function mostrar(lista){
+      galeria.innerHTML="";
+      lista.forEach(item=>{
+        const div=document.createElement("div");
+        div.classList.add("item");
+        div.innerHTML=`
+          <img src="${item.foto}" alt="${item.nome}">
+          <p><strong>${item.nome}</strong></p>
+          <p>Categoria: ${item.categoria}</p>
+          <p>Tipo: ${item.tipo}</p>
+          <p>Data: ${item.data}</p>`;
+        galeria.appendChild(div);
+      });
+    }
+    mostrar(colecao);
+    filtro.addEventListener("change",()=>{
+      const cat=filtro.value;
+      mostrar(cat==="todas"?colecao:colecao.filter(i=>i.categoria===cat));
     });
   </script>
 </body>
