@@ -3,126 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastrar Coleção - COLLECT</title>
+  <title>Cadastrar Item - COLLECT</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-      font-family: Arial, sans-serif;
-      color: #FFD700;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .cadastro-container {
-      background-color: rgba(255, 215, 0, 0.05);
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-      width: 400px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      margin: 10px 0 5px;
-      font-weight: bold;
-    }
-
-    input, select {
-      padding: 10px;
-      border: 1px solid #FFD700;
-      border-radius: 5px;
-      background: #000;
-      color: #FFD700;
-    }
-
-    input[type="file"] {
-      border: none;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 12px;
-      background-color: #FFD700;
-      border: none;
-      border-radius: 5px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #fff;
-    }
-
-    .voltar {
-      margin-top: 15px;
-      text-align: center;
-    }
-
-    .voltar a {
-      color: #FFD700;
-      text-decoration: none;
-    }
-
-    .voltar a:hover {
-      text-decoration: underline;
-    }
+    body {background:#000;color:#FFD700;font-family:Arial;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}
+    .form-container {background:rgba(255,215,0,.05);padding:30px;border-radius:10px;box-shadow:0 0 15px rgba(255,215,0,.5);width:400px}
+    h2 {text-align:center;margin-bottom:20px}
+    input,select {width:100%;padding:10px;margin:10px 0;border:1px solid #FFD700;border-radius:5px;background:#000;color:#FFD700}
+    button {width:100%;padding:12px;background:#FFD700;border:none;border-radius:5px;color:#000;font-weight:bold;cursor:pointer}
+    button:hover {background:#fff}
   </style>
 </head>
 <body>
-  <div class="cadastro-container">
-    <h2>Cadastrar Coleção</h2>
-    <form onsubmit="return salvarColecao()">
-      <label for="nome">Nome do item:</label>
-      <input type="text" id="nome" required>
-
-      <label for="categoria">Categoria:</label>
+  <div class="form-container">
+    <h2>Cadastrar Item</h2>
+    <form onsubmit="return salvarItem()">
+      <input type="text" id="nome" placeholder="Nome do item" required>
       <select id="categoria" required>
-        <option value="">Selecione</option>
+        <option value="">Categoria</option>
         <option value="revista">Revista</option>
         <option value="gibi">Gibi</option>
         <option value="lata">Lata</option>
         <option value="figurinha">Figurinha</option>
         <option value="outro">Outro</option>
       </select>
-
-      <label for="tipo">Tipo:</label>
-      <input type="text" id="tipo" placeholder="Ex: edição especial" required>
-
-      <label for="data">Data:</label>
+      <input type="text" id="tipo" placeholder="Tipo" required>
       <input type="date" id="data" required>
-
-      <label for="foto">Adicionar foto:</label>
       <input type="file" id="foto" accept="image/*">
-
-      <button type="submit">Salvar Coleção</button>
+      <button type="submit">Salvar</button>
     </form>
-
-    <div class="voltar">
-      <p><a href="colecao.html">Voltar para Página Inicial</a></p>
-    </div>
   </div>
-
   <script>
-function salvarColecao() {
-  alert("Coleção cadastrada com sucesso!");
-  window.location.href = "colecao.html"; 
-  return false;
-}
+    function salvarItem(){
+      alert("Item cadastrado com sucesso!");
+      window.location.href="galeria.html";
+      return false;
+    }
   </script>
 </body>
 </html>
