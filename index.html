@@ -24,10 +24,9 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
-    .logo-hero {
-      font-size: 64px;
-      font-weight: 800;
-      letter-spacing: 2px;
+    .logo-hero img {
+      max-width: 220px; /* ajuste o tamanho da logo */
+      height: auto;
       margin-bottom: 20px;
     }
     .arrow-up {
@@ -55,12 +54,18 @@
 <body>
   <section class="hero">
     <div class="hero-content">
-      <div class="logo-hero">COLLECT</div>
+      <!-- Aqui você coloca sua logo -->
+      <div class="logo-hero">
+        <img src="Copilot_20251127_140848.png" alt="Logo COLLECT" />
+      </div>
+
+      <!-- Seta para ir à página principal -->
       <button class="arrow-up" aria-label="Ir para página principal" onclick="location.href='principal.html'">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
           <path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" stroke="currentColor" stroke-width="1.6" fill="none"/>
         </svg>
       </button>
+
       <div class="footer">Preto e dourado, simples e elegante.</div>
     </div>
   </section>
