@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>COLLECT — Página principal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <!-- Cabeçalho -->
+    <div class="header">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div class="title">COLLECT</div>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <a class="btn btn-outline" href="cadastrar-colecao.html">Cadastrar coleção</a>
+        <a class="btn btn-ghost" href="login.html">Sair / Login</a>
+      </div>
+    </div>
+
+    <!-- Galeria -->
+    <section class="card" id="galeria">
+      <h2 style="color: var(--gold); margin-top:0;">Minha coleção</h2>
+      <div class="filters">
+        <label for="filterCategoria" style="align-self:center; color: var(--muted);">Filtrar por categoria</label>
+        <select id="filterCategoria">
+          <option value="todos">Todos</option>
+          <option value="revista">Revista</option>
+          <option value="gibi">Gibi</option>
+          <option value="latas">Latas</option>
+          <option value="figurinhas">Figurinhas</option>
+          <option value="outros">Outros</option>
+        </select>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- Plano Premium -->
+    <aside class="card">
+      <h2 style="color: var(--gold); margin-top:0;">Plano Premium</h2>
+      <ul style="list-style:none; padding-left:0; display:grid; gap:10px;">
+        <li><strong>Benefício:</strong> 2 contas vinculadas</li>
+        <li><strong>Benefício:</strong> Lista de favoritos</li>
+        <li><strong>Benefício:</strong> Indicador de raridade</li>
+        <li><strong>Benefício:</strong> Backup avançado</li>
+        <li><strong>Benefício:</strong> Filtros e busca avançada</li>
+      </ul>
+      <button class="btn btn-full" onclick="alert('Em breve: assinatura Premium.');">Assinar Premium</button>
+    </aside>
+
+    <!-- Atalho para cadastro -->
+    <section class="card">
+      <h3 style="color: var(--gold); margin-top:0;">Cadastrar coleção (atalho)</h3>
+      <p style="color: var(--muted);">Para manter o fluxo organizado, o cadastro é feito em uma página dedicada.</p>
+      <a class="btn" href="cadastrar-colecao.html">Ir para cadastro</a>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
