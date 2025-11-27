@@ -101,6 +101,17 @@
       border-color: var(--gold);
     }
 
+    .preview {
+      margin-top: 12px;
+      text-align: center;
+    }
+    .preview img {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
     .footer { color: var(--muted); text-align: center; margin-top: 16px; }
   </style>
 </head>
@@ -143,11 +154,12 @@
         </div>
         <div class="input-group">
           <label>Foto</label>
-          <input type="file" name="foto" accept="image/*" />
+          <input type="file" name="foto" accept="image/*" id="fotoInput" />
+          <div class="preview" id="preview"></div>
           <small class="footer">A imagem é usada apenas localmente (no seu navegador).</small>
         </div>
 
-        <div class="grid" style="display:flex; gap:10px;">
+        <div style="display:flex; gap:10px;">
           <button class="btn btn-full" type="submit">Salvar</button>
           <a class="btn btn-ghost btn-full" href="principal.html">Cancelar</a>
         </div>
@@ -157,5 +169,25 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+    // Pré-visualização da foto
+    const fotoInput = document.getElementById("fotoInput");
+    const preview = document.getElementById("preview");
+
+    if (fotoInput) {
+      fotoInput.addEventListener("change", () => {
+        const file = fotoInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = e => {
+            preview.innerHTML = `<img src="${e.target.result}" alt="Pré-visualização">`;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          preview.innerHTML = "";
+        }
+      });
+    }
+  </script>
 </body>
 </html>
