@@ -1,33 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>COLLECT - Início</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>COLLECT — Início</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: #d4af37;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .hero-content {
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .logo-hero {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .arrow-up {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: #d4af37;
+      transition: transform .2s ease;
+    }
+    .arrow-up:hover {
+      transform: translateY(-5px);
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #b8912f;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>COLLECT</h1>
-  </header>
-
-  <div class="container">
-    <h2>Bem-vindo à sua coleção</h2>
-    <a href="galeria.html" class="btn">Ver Galeria</a>
-    <a href="colecao.html" class="btn">Ver Lista</a>
-    <a href="cadastro-colecao.html" class="btn">Cadastrar Novo Item</a>
-
-    <div class="premium card">
-      <h3>Plano Premium</h3>
-      <p>Benefícios exclusivos:</p>
-      <ul>
-        <li>✨ 2 contas simultâneas</li>
-        <li>✨ Lista de favoritos</li>
-        <li>✨ Identificação de raridade</li>
-        <li>✨ Mais espaço para fotos</li>
-      </ul>
-      <button class="btn" onclick="alert('Assinatura Premium ativada!')">Assinar Premium</button>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="logo-hero">COLLECT</div>
+      <button class="arrow-up" aria-label="Ir para página principal" onclick="location.href='principal.html'">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+          <path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        </svg>
+      </button>
+      <div class="footer">Preto e dourado, simples e elegante.</div>
     </div>
-  </div>
+  </section>
 </body>
 </html>
