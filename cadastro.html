@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>COLLECT — Cadastro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { margin:0; background:#0b0b0b; color:#f5f5f5; font-family:"Inter",sans-serif; }
+    .container { max-width:700px; margin:0 auto; padding:24px; }
+    .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand .logo { width:44px; height:44px; border-radius:50%; border:2px solid #d4af37; display:grid; place-items:center; color:#d4af37; font-weight:700; }
+    .brand .title { font-weight:700; color:#d4af37; font-size:18px; }
+    .card { background:#111213; border:1px solid #1f1f1f; border-radius:14px; padding:22px; }
+    .btn { background:#d4af37; color:#111; padding:12px 16px; border:none; border-radius:10px; cursor:pointer; font-weight:600; }
+    .input-group { display:grid; gap:8px; margin-bottom:16px; }
+    label { color:#c9c9c9; font-size:14px; }
+    input { background:#0f0f10; color:#f5f5f5; border:1px solid #1f1f1f; padding:12px; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><div class="logo">C</div><div class="title">COLLECT</div></div>
+      <a class="btn" href="index.html">Início</a>
+    </div>
+    <div class="card">
+      <h2 style="color:#d4af37;">Criar conta</h2>
+      <form id="formCadastro">
+        <div class="input-group">
+          <label>Nome completo</label>
+          <input type="text" name="nome" placeholder="Seu nome" required />
+        </div>
+        <div class="input-group">
+          <label>Nome de usuário</label>
+          <input type="text" name="usuario" placeholder="Usuário" required />
+        </div>
+        <div class="input-group">
+          <label>E-mail</label>
+          <input type="email" name="email" placeholder="seuemail@exemplo.com" required />
+        </div>
+        <div class="input-group">
+          <label>Senha</label>
+          <input type="password" name="senha" placeholder="Crie uma senha" required />
+        </div>
+        <button class="btn" type="submit">Cadastrar</button>
+        <small style="color:#c9c9
