@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>COLLECT — Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --gold: #d4af37;
+      --gold-soft: #b8912f;
+      --text: #f5f5f5;
+      --muted: #c9c9c9;
+      --card: #111213;
+      --border: #1f1f1f;
+      --focus: #ffd76b;
+      --shadow: rgba(0,0,0,0.6);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .brand .title {
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #0e0e0e 0%, #0a0a0a 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 20px 50px var(--shadow);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #111;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform .1s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: var(--gold-soft); }
+    .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-full { width: 100%; }
+
+    .input-group { display: grid; gap: 8px; margin-bottom: 16px; }
+    label { color: var(--muted); font-size: 14px; }
+    input {
+      background: #0f0f10;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+    }
+    input:focus {
+      outline: 2px solid var(--focus);
+      border-color: var(--gold);
+    }
+
+    .footer { color: var(--muted); text-align: center; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Cabeçalho -->
+    <div class="header">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div class="title">COLLECT</div>
+      </div>
+      <a class="btn btn-outline" href="index.html">Início</a>
+    </div>
+
+    <!-- Card de login -->
+    <div class="card">
+      <h2 style="color: var(--gold); margin-top:0;">Entrar</h2>
+      <form id="formLogin" class="grid">
+        <div class="input-group">
+          <label>Nome de usuário</label>
+          <input type="text" name="usuario" placeholder="Seu usuário" required />
+        </div>
+        <div class="input-group">
+          <label>Senha</label>
+          <input type="password" name="senha" placeholder="Sua senha" required />
+        </div>
+
+        <div style="display:flex; gap:10px; margin-bottom:16px;">
+          <button class="btn btn-full" type="submit">Entrar</button>
+          <a class="btn btn-ghost btn-full" href="principal.html">Ir para página principal</a>
+        </div>
+
+        <div class="grid" style="margin-top:12px;">
+          <a href="senha.html">Esqueceu a senha?</a>
+          <span>Não tem uma conta? <a href="cadastro.html">Cadastre-se.</a></span>
+        </div>
+
+        <hr style="border-color: var(--border); margin:16px 0;" />
+
+        <div class="grid">
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <button class="btn btn-outline" type="button" data-social="facebook">Entrar com Facebook</button>
+            <button class="btn btn-outline" type="button" data-social="instagram">Entrar com Instagram</button>
+            <button class="btn btn-outline" type="button" data-social="google">Entrar com Google</button>
+            <button class="btn btn-outline" type="button" data-social="outros">Outros</button>
+          </div>
+          <small class="footer">Ao clicar, você será redirecionada para vincular sua conta.</small>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
