@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>COLLECT — Vincular conta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { margin:0; background:#0b0b0b; color:#f5f5f5; font-family:"Inter",sans-serif; }
+    .container { max-width:600px; margin:0 auto; padding:24px; }
+    .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand .logo { width:44px; height:44px; border-radius:50%; border:2px solid #d4af37; display:grid; place-items:center; color:#d4af37; font-weight:700; }
+    .brand .title { font-weight:700; color:#d4af37; font-size:18px; }
+    .card { background:#111213; border:1px solid #1f1f1f; border-radius:14px; padding:22px; }
+    .btn { background:#d4af37; color:#111; padding:12px 16px; border:none; border-radius:10px; cursor:pointer; font-weight:600; margin-bottom:10px; width:100%; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand"><div class="logo">C</div><div class="title">COLLECT</div></div>
+      <a class="btn" href="login.html">Voltar ao login</a>
+    </div>
+    <div class="card">
+      <h2 style="color:#d4af37;">Vincular conta</h2>
+      <p style="color:#c9c9c9;">Selecione o provedor e informe suas credenciais para concluir a vinculação.</p>
+      <button class="btn" onclick="alert('Simulação: Facebook vinculado.'); location.href='principal.html';">Facebook</button>
+      <button class="btn" onclick="alert('Simulação: Instagram vinculado.'); location.href='principal.html';">Instagram</button>
+      <button class="btn" onclick="alert('Simulação: Google vinculado.'); location.href='principal.html';">Google</button>
+      <button class="btn" onclick="alert('Simulação: Outro vinculado.'); location.href='principal.html';">Outros</button>
+    </div>
+  </div>
+</body>
+</html>
