@@ -17,127 +17,65 @@
       --shadow: rgba(0,0,0,0.6);
       --radius: 14px;
       --radius-sm: 10px;
-      --spacing: 18px;
       --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font);
-    }
-
-    .container {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 24px;
-    }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font); }
+    .container { max-width:1040px; margin:0 auto; padding:24px; }
 
     /* Cabeçalho */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand .logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-weight: 700;
-    }
-    .brand .title {
-      font-weight: 700;
-      color: var(--gold);
-      font-size: 18px;
-    }
+    .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand .logo { width:44px; height:44px; border-radius:50%; border:2px solid var(--gold); display:grid; place-items:center; color:var(--gold); font-weight:700; }
+    .brand .title { font-weight:700; color:var(--gold); font-size:18px; }
 
     /* Botões */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--gold);
-      color: #111;
-      padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: transform .1s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .btn:hover { transform: translateY(-1px); background: var(--gold-soft); }
-    .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
-    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-full { width: 100%; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--gold); color:#111; padding:12px 16px; border-radius:10px; border:none; cursor:pointer; font-weight:600; }
+    .btn:hover { background:var(--gold-soft); }
+    .btn-outline { background:transparent; color:var(--gold); border:1px solid var(--gold); }
+    .btn-ghost { background:transparent; color:var(--text); border:1px solid var(--border); }
+    .btn-full { width:100%; }
 
     /* Cards */
-    .card {
-      background: linear-gradient(180deg, #0e0e0e 0%, #0a0a0a 100%);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: 0 20px 50px var(--shadow);
-      margin-bottom: 24px;
-    }
+    .card { background:#111213; border:1px solid var(--border); border-radius:14px; padding:22px; box-shadow:0 20px 50px var(--shadow); margin-bottom:24px; }
 
     /* Galeria */
-    .filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-    @media (max-width: 1080px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 760px)  { .gallery { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 520px)  { .gallery { grid-template-columns: 1fr; } }
+    .filters { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+    .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    @media(max-width:1080px){.gallery{grid-template-columns:repeat(3,1fr);} }
+    @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:520px){.gallery{grid-template-columns:1fr;} }
 
-    .item {
-      background: #0e0e0f;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .item img { width: 100%; height: 160px; object-fit: cover; background: #0b0b0b; }
-    .item .meta { padding: 12px; display: grid; gap: 6px; }
-    .item .meta .name { font-weight: 700; color: var(--gold); }
-    .item .meta .small { color: var(--muted); font-size: 13px; }
+    .item { background:#0e0e0f; border:1px solid var(--border); border-radius:14px; overflow:hidden; cursor:pointer; }
+    .item img { width:100%; height:160px; object-fit:cover; background:#0b0b0b; }
+    .item .meta { padding:12px; display:grid; gap:6px; }
+    .item .meta .name { font-weight:700; color:var(--gold); }
+    .item .meta .small { color:var(--muted); font-size:13px; }
 
-    /* Rodapé */
-    .footer { color: var(--muted); text-align: center; padding: 24px; }
+    /* Lightbox */
+    .lightbox { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.9); justify-content:center; align-items:center; flex-direction:column; }
+    .lightbox-content { max-width:80%; max-height:80%; border:2px solid var(--gold); border-radius:14px; box-shadow:0 0 20px rgba(212,175,55,0.6); }
+    .close { position:absolute; top:20px; right:30px; color:var(--gold); font-size:40px; font-weight:bold; cursor:pointer; }
+    .close:hover { color:var(--gold-soft); }
+    #caption { margin-top:12px; color:var(--gold); font-size:16px; text-align:center; }
   </style>
 </head>
 <body>
   <div class="container">
     <!-- Cabeçalho -->
     <div class="header">
-      <div class="brand">
-        <div class="logo">C</div>
-        <div class="title">COLLECT</div>
-      </div>
+      <div class="brand"><div class="logo">C</div><div class="title">COLLECT</div></div>
       <div style="display:flex; gap:10px;">
-        <a class="btn btn-outline" href="cadastrar-colecao.html">Cadastrar coleção</a>
-        <a class="btn btn-ghost" href="login.html">Sair / Login</a>
+        <a class="btn-outline btn" href="cadastrar-colecao.html">Cadastrar coleção</a>
+        <a class="btn-ghost btn" href="login.html">Sair / Login</a>
       </div>
     </div>
 
     <!-- Galeria -->
     <section class="card" id="galeria">
-      <h2 style="color: var(--gold); margin-top:0;">Minha coleção</h2>
+      <h2 style="color:var(--gold);">Minha coleção</h2>
       <div class="filters">
-        <label for="filterCategoria" style="align-self:center; color: var(--muted);">Filtrar por categoria</label>
+        <label for="filterCategoria" style="color:var(--muted);">Filtrar por categoria</label>
         <select id="filterCategoria">
           <option value="todos">Todos</option>
           <option value="revista">Revista</option>
@@ -152,7 +90,7 @@
 
     <!-- Plano Premium -->
     <aside class="card">
-      <h2 style="color: var(--gold); margin-top:0;">Plano Premium</h2>
+      <h2 style="color:var(--gold);">Plano Premium</h2>
       <ul style="list-style:none; padding-left:0; display:grid; gap:10px;">
         <li><strong>Benefício:</strong> 2 contas vinculadas</li>
         <li><strong>Benefício:</strong> Lista de favoritos</li>
@@ -163,8 +101,53 @@
       <button class="btn btn-full" onclick="alert('Em breve: assinatura Premium.');">Assinar Premium</button>
     </aside>
 
+    <!-- Atalho para cadastro -->
+    <section class="card">
+      <h3 style="color:var(--gold);">Cadastrar coleção (atalho)</h3>
+      <p style="color:var(--muted);">Para manter o fluxo organizado, o cadastro é feito em uma página dedicada.</p>
+      <a class="btn" href="cadastrar-colecao.html">Ir para cadastro</a>
+    </section>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" alt="Imagem ampliada">
+    <div id="caption"></div>
   </div>
 
   <script src="script.js"></script>
+  <script>
+    // Lightbox
+    function setupLightbox() {
+      const gallery = document.querySelector("#gallery");
+      const lightbox = document.querySelector("#lightbox");
+      const lightboxImg = document.querySelector("#lightbox-img");
+      const caption = document.querySelector("#caption");
+      const closeBtn = document.querySelector(".close");
+
+      if (!gallery || !lightbox) return;
+
+      gallery.addEventListener("click", (e) => {
+        if (e.target.tagName === "IMG") {
+          lightbox.style.display = "flex";
+          lightboxImg.src = e.target.src;
+          caption.textContent = e.target.alt || "";
+        }
+      });
+
+      closeBtn.addEventListener("click", () => {
+        lightbox.style.display = "none";
+      });
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.style.display = "none";
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", setupLightbox);
+  </script>
 </body>
 </html>
